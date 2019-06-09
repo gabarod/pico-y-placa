@@ -1,17 +1,27 @@
-<h1>
-    Pico y Placa
-</h1>
-
-<div class="ui-g ui-fluid">
-    <div class="ui-g-6 ui-md-6">
-        <h3>Matricula del vehículo</h3>
-        <p-inputMask name='licensePlate' [(ngModel)]="licensePlate" mask="aaa-9999"></p-inputMask>
-    </div>
-    <div class="ui-g-6 ui-md-6">
-        <h3>Fecha y hora</h3>
-        <p-calendar name='currentDate' [(ngModel)]="currentDate" [locale]="es" showTime='true' dateFormat="dd/mm/yy"></p-calendar>
-    </div>
-    <div class="ui-g-6 ui-md-6">
-        <button (click)='checkLicensePlate()'>Consultar</button>
+<div class="bg-contact100">
+    <div class="container-contact100">
+        <div class="wrap-contact100">
+            <div class="contact100-pic js-tilt" data-tilt>
+                <!-- Image credits -->
+                <!-- Free vector art via <a href="https://vecteezy.com">vecteezy.com</a> -->
+                <embed class="contact100-pic" type="image/svg+xml" src="assets/images/31.svg" />
+            </div>
+            <form class="contact100-form validate-form">
+                <span class="contact100-form-title">
+                   Pico y PLaca
+                </span>
+                <div class="wrap-input100 validate-input">
+                    <p-inputMask name='licensePlate' placeholder='Ingrese placa vehicular' [(ngModel)]="licensePlate" mask="aaa-9999"></p-inputMask>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <p-calendar name='currentDate' [(ngModel)]="currentDate" [locale]="es" showTime='true' dateFormat="dd/mm/yy"></p-calendar>
+                </div>
+                <div class="container-contact100-form-btn">
+                    <button (click)='checkLicensePlate()' class="contact100-form-btn">
+                            Consultar
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
