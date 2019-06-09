@@ -1,6 +1,6 @@
 # PicoYPlaca
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
+ Project that verifies if the license plate number is allowed to transit the streets of Quito within a delimited perimeter, according to the designated days and times.
 
 ## Development server
 
