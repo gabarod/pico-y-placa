@@ -116,6 +116,20 @@ button:hover {
     padding-bottom: 36px;
 }
 
+.contact100-form-subTitle {
+    display: block;
+    font-family: Montserrat-ExtraBold;
+    font-size: 22px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: left;
+    padding-bottom: 12px;
+}
+
+.contact100-form-title-16 {
+    font-size: 16px;
+}
+
 
 /*------------------------------------------------------------------
   [ Input element ]*/
@@ -203,6 +217,40 @@ button:hover {
 
 .contact100-form-btn:hover {
     background: #333333;
+}
+
+.ui-button-alert {
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    font-family: Montserrat-Bold;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.ui-button-success {
+    background: #846add !important;
+}
+
+.ui-button-secondary {
+    background: #ccc !important;
+    ;
+}
+
+/deep/ .ui-sidebar-bottom {
+    height: 14em;
+}
+
+.pb-10 {
+    padding-bottom: 10px;
+}
+
+.pb-15 {
+    padding-bottom: 15px;
+}
+
+.pb-20 {
+    padding-bottom: 20px;
 }
 
 

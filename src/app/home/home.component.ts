@@ -15,7 +15,15 @@ export class HomeComponent implements OnInit {
   licensePlate: string;
   currentDate: Date;
 
+  visibleSidebar: boolean;
+  alertMessage: string;
+
   es: any;
+  isAlert: boolean;
+  foundRange: RestrictionSchedule;
+
+  messageOk = 'Está autorizado a transitar sin problemas';
+  messageValidate = 'Por favor ingrese una placa vehicular válida.';
 
   constructor() {
     this.initDays();
@@ -26,6 +34,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  enableSideBar(message?: string) {
+    if (message) { this.alertMessage = message; this.isAlert = true; }
+    this.visibleSidebar = true;
   }
 
   initSpanishLocale() {
@@ -177,24 +190,40 @@ export class HomeComponent implements OnInit {
   }
 
   checkLicensePlate() {
+    this.clearAlerts();
+    if (!this.licensePlate) {
+      this.enableSideBar(this.messageValidate);
+      return;
+    }
     const day = this.currentDate.getDay();
     const currentHour = this.currentDate.getHours() + ':' + this.currentDate.getMinutes();
 
     const isInDay = this.days.find(x => x.numberDay === day);
 
-    if (!isInDay) { return; }
+    if (!isInDay) { this.enableSideBar(this.messageOk); return; }
 
-    if (isInDay.restrictionLastDigit.length === 0) { return; }
+    if (isInDay.restrictionLastDigit.length === 0) { this.enableSideBar(this.messageOk); return; }
 
     const lastDigit = this.licensePlate.slice(this.licensePlate.length - 1);
 
     const isDayApply = isInDay.restrictionLastDigit.includes(+lastDigit);
 
-    if (!isDayApply) { return; }
+    if (!isDayApply) { this.enableSideBar(this.messageOk); return; }
 
-    const isInRange = this.schedules.filter(x => this.isInRange(currentHour, [x.startHour, x.endHour]));
+    this.foundRange = this.schedules.find(x => this.isInRange(currentHour, [x.startHour, x.endHour]));
+    console.dir(this.foundRange);
+    if (this.foundRange) {
+      this.enableSideBar();
+    } else {
+      this.enableSideBar(this.messageOk);
+    }
+    this.enableSideBar();
+  }
 
-    alert(JSON.stringify(isInRange));
+  clearAlerts() {
+    this.visibleSidebar = false;
+    this.isAlert = false;
+    this.foundRange = null;
   }
 
 }

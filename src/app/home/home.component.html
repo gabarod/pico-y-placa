@@ -25,3 +25,23 @@
         </div>
     </div>
 </div>
+
+<!-- SideBar alert -->
+<p-sidebar [(visible)]="visibleSidebar" position="bottom" [baseZIndex]="10000">
+    <ng-container *ngIf="isAlert">
+        <span class="contact100-form-title contact100-form-title-16">{{alertMessage}}</span>
+    </ng-container>
+
+    <ng-container *ngIf="foundRange">
+        <div class="pb-10">
+            <span class="contact100-form-subTitle contact100-form-title-16">El vehículo está restringido para su circulación</span>
+            <p><b>Placa :</b> {{licensePlate}} </p>
+            <p><b>Horario:</b> {{foundRange?.description}}</p>
+            <p><b>Desde:</b> {{foundRange?.startHour}} </p>
+            <p><b>Hasta:</b> {{foundRange?.endHour}} </p>
+        </div>
+    </ng-container>
+
+    <button pButton type="button" (click)="clearAlerts()" label="Ok" class="ui-button-alert ui-button-success"></button>
+    <button pButton type="button" (click)="clearAlerts()" label="Cancel" class="ui-button-alert ui-button-secondary"></button>
+</p-sidebar>
